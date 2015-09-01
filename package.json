@@ -40,7 +40,8 @@
   },
   "homepage": "https://github.com/naoufal/universal-config",
   "dependencies": {
-    "envify": "3.4.0"
+    "envify": "3.4.0",
+    "through": "2.3.8"
   },
   "devDependencies": {
     "babel": "5.8.21",
