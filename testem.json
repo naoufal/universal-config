@@ -1,0 +1,30 @@
+{
+  "framework": "mocha",
+  "src_files": [
+    "./test/browserify.js",
+    "./test/webpack.js"
+  ],
+  "serve_files": [
+    "./test/browserify-test.js",
+    "./test/webpack-test.js"
+  ],
+  "launchers": {
+    "Node": {
+      "command": "./node_modules/.bin/mocha ./test/server.js -R tap",
+      "protocol": "tap"
+    }
+  },
+  "reporter": "dot",
+  "before_tests": "NODE_ENV=test npm run build:test",
+  "on_exit": "rm ./test/browserify-test.js && rm ./test/webpack-test.js",
+  "launch_in_dev": [
+    "node",
+    "phantomjs",
+    "chrome",
+    "safari",
+    "firefox"
+  ],
+  "launch_in_ci": [
+    "node"
+  ]
+}

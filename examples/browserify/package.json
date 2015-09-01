@@ -1,0 +1,27 @@
+{
+  "name": "universal-config-browserify-example",
+  "version": "0.0.0",
+  "description": "Universal config browserify example",
+  "main": "index.js",
+  "scripts": {
+    "build": "mkdir -p ./app/dist && ./node_modules/.bin/browserify ./app/client.js -t babelify -o ./app/dist/main.js",
+    "server": "./node_modules/.bin/babel-node app/server.js",
+    "start": "npm run build && npm run server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/naoufal/universal-config"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/naoufal/universal-config/issues"
+  },
+  "homepage": "https://github.com/naoufal/universal-config",
+  "dependencies": {
+    "babel": "5.8.21",
+    "babelify": "6.2.0",
+    "browserify": "11.0.1",
+    "react": "0.13.3"
+  }
+}

@@ -1,0 +1,36 @@
+body {
+  margin: 0;
+}
+
+h3 {
+  margin: 0;
+}
+
+div {
+  margin: 0;
+}
+
+#server-variables {
+  float: left;
+  width: 50%;
+  height: 100%;
+  /* background: #2e2e2c; */
+  /* color: #f7db4d; */
+  overflow: auto;
+}
+
+#client-variables {
+  float: left;
+  width: 50%;
+  height: 100%;
+  /* background: #f7db4d; */
+  /* color: #2e2e2c; */
+}
+
+.variable-list {
+
+}
+
+.variable-list__heading {
+  text-transform: capitalize;
+}
