@@ -4,11 +4,11 @@
   "description": "Configuration for your universal Javascript application",
   "main": "lib/index.js",
   "scripts": {
-    "build": "./node_modules/.bin/babel --optional runtime src --out-dir lib && npm run copy:lib",
+    "build": "./node_modules/.bin/babel --optional runtime src --out-dir lib",
     "build:test": "npm run build:test:browserify && npm run build:test:webpack",
     "build:test:browserify": "./node_modules/.bin/browserify -e test/browserify.js -o test/browserify-test.js -t ./test/support/browserify-transform-stub.js",
     "build:test:webpack": "./node_modules/.bin/webpack --config webpack.config.test.js",
-    "copy:lib": "sh scripts/copy-lib.sh",
+    "copy:lib": "sh ./scripts/copy-lib.sh",
     "dev": "./node_modules/.bin/babel --optional runtime src --watch --out-dir lib && npm run copy:lib",
     "test": "npm run build && NODE_ENV=test ./node_modules/.bin/testem",
     "test:ci": "npm run build && NODE_ENV=test ./node_modules/.bin/testem ci"
