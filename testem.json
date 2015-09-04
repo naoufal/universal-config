@@ -12,6 +12,10 @@
     "Node": {
       "command": "./node_modules/.bin/mocha ./test/server.js -R tap",
       "protocol": "tap"
+    },
+    "SL_Chrome": {
+      "command": "./node_modules/.bin/saucie",
+      "protocol": "tap"
     }
   },
   "reporter": "dot",
@@ -20,11 +24,10 @@
   "launch_in_dev": [
     "node",
     "phantomjs",
-    "chrome",
-    "safari",
-    "firefox"
+    "chrome"
   ],
   "launch_in_ci": [
-    "node"
+    "node",
+    "SL_Chrome"
   ]
 }

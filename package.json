@@ -10,8 +10,8 @@
     "build:test:webpack": "./node_modules/.bin/webpack --config webpack.config.test.js",
     "copy:lib": "sh ./scripts/copy-lib.sh",
     "dev": "./node_modules/.bin/babel --optional runtime src --watch --out-dir lib && npm run copy:lib",
-    "test": "npm run build && NODE_ENV=test ./node_modules/.bin/testem",
-    "test:ci": "npm run build && NODE_ENV=test ./node_modules/.bin/testem ci"
+    "test": "npm run build && NODE_ENV=test ./node_modules/.bin/testem --port 8080",
+    "test:ci": "npm run build && NODE_ENV=test ./node_modules/.bin/testem ci --port 8080"
   },
   "repository": {
     "type": "git",
@@ -52,7 +52,8 @@
     "chai": "2.0.0",
     "mocha": "2.2.5",
     "mockery": "1.4.0",
-    "testem": "0.9.2",
+    "saucie": "0.1.6",
+    "testem": "0.9.4",
     "webpack": "1.11.0"
   },
   "browser": {
