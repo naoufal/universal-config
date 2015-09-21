@@ -10,11 +10,31 @@
   ],
   "launchers": {
     "Node": {
-      "command": "./node_modules/.bin/mocha ./test/server.js -R tap",
+      "command": "mocha ./test/server.js -R tap",
       "protocol": "tap"
     },
     "SL_Chrome": {
-      "command": "./node_modules/.bin/saucie",
+      "command": "saucie  --browserNameSL='chrome'",
+      "protocol": "tap"
+    },
+    "SL_Safari": {
+      "command": "saucie  --browserNameSL='safari'",
+      "protocol": "tap"
+    },
+    "SL_Firefox": {
+      "command": "saucie  --browserNameSL='firefox'",
+      "protocol": "tap"
+    },
+    "SL_IE9": {
+      "command": "saucie --browserNameSL='internet explorer' --versionSL='9' --platformSL='Windows 7'",
+      "protocol": "tap"
+    },
+    "SL_IE10": {
+      "command": "saucie --browserNameSL='internet explorer' --versionSL='10' --platformSL='Windows 7'",
+      "protocol": "tap"
+    },
+    "SL_IE11": {
+      "command": "saucie --browserNameSL='internet explorer' --versionSL='11' --platformSL='Windows 7'",
       "protocol": "tap"
     }
   },
@@ -28,6 +48,11 @@
   ],
   "launch_in_ci": [
     "node",
-    "SL_Chrome"
+    "SL_Chrome",
+    "SL_Safari",
+    "SL_Firefox",
+    "SL_IE9",
+    "SL_IE10",
+    "SL_IE11"
   ]
 }
