@@ -4,4 +4,4 @@ module.exports = {
   NESTED_SERVER: {
     VALUE: 'nest value'
   }
-}
+};

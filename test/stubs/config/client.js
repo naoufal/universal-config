@@ -4,4 +4,4 @@ module.exports = {
   NESTED_CLIENT: {
     VALUE: 'nested value'
   }
-}
+};
