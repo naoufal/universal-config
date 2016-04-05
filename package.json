@@ -1,6 +1,6 @@
 {
   "name": "universal-config",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Configuration for your universal Javascript application",
   "main": "lib/index.js",
   "scripts": {
