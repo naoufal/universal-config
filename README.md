@@ -19,7 +19,7 @@ Create a config folder at the root of your project.
 mkdir config
 ```
 
-Within the `config` folder, create a `server.js` file that exports an Object containing your private config. 
+Within the `config` folder, create a `server.js` file that exports an Object containing your private config.
 
 __`config/server.js`__
 
@@ -49,14 +49,14 @@ export default {
 ```
 
 ### Server side
-Using Universal Config on the server is as simple as importing the module. 
+Using Universal Config on the server is as simple as importing the module.
 
 ```js
 // Server JavaScript
 
 import config from "universal-config";
 
-config.get("AWS:accessKey");  // Outputs your AWS_SECRET_KEY 
+config.get("AWS:accessKey");  // Outputs your AWS_SECRET_KEY
 ```
 
 ### Client side
@@ -78,8 +78,15 @@ Once you're setup, you'll be able to retrive your client config.  It's worth not
 import config from "universal-config";
 
 config.get("AWS:accessKey");   // undefined
-config.get("FACEBOOK_APP_ID"); // Outputs your FACEBOOK_APP_ID 
+config.get("FACEBOOK_APP_ID"); // Outputs your FACEBOOK_APP_ID
 ```
+
+### Development
+In development, you may want to environment variables in a file instead of your `.bash_profile`.
+
+If you want to use this approach, you can override any server or client variable by creating a `dev.js` file in your `config` directory.  You'll want to add this file to your `.gitignore`.
+
+__NOTE:__ _The variables in this file will be exposed both on the client and the server, but this shouldn't be a problem since you should only be using this in development._
 
 ## Methods
 
