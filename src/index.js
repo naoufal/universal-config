@@ -2,18 +2,17 @@ class Config {
   constructor() {
     this.setEnvironment();
 
-    let store = {};
     this._server = this.getServerVars();
     this._client = this.getClientVars();
+    this._dev = this.getDevVars();
 
-    Object.assign(store, this._client, this._server);
-    this._store = store;
+    this._store = Object.assign({}, this._client, this._server, this._dev);
   }
 
   set(key, value) {
     if (key.match(/:/)) {
-      var keys = key.split(':');
-      var store_key = this._store;
+      const keys = key.split(':');
+      let store_key = this._store;
 
       keys.forEach(function(k, i) {
         if (keys.length === (i + 1)) {
@@ -36,7 +35,7 @@ class Config {
     // Is the key a nested object
     if (key.match(/:/)) {
       // Transform getter string into object
-      var store_key = this.buildNestedKey(key);
+      const store_key = this.buildNestedKey(key);
 
       return store_key;
     }
@@ -58,7 +57,7 @@ class Config {
   }
 
   getServerVars() {
-    var serverVars = {};
+    let serverVars = {};
 
     if (this._env === 'server') {
       try {
@@ -74,7 +73,7 @@ class Config {
   }
 
   getClientVars() {
-    var clientVars;
+    let clientVars;
 
     try {
       clientVars = require('../../../config/client');
@@ -89,11 +88,31 @@ class Config {
     return clientVars;
   }
 
+  getDevVars() {
+    let devVars;
+
+    if (process.env.NODE_ENV === 'production') {
+      return {};
+    }
+
+    try {
+      devVars = require('../../../config/dev');
+
+      if (process.env.NODE_ENV === 'development') {
+        console.warn(`Found a dev config in \`./config\`.`);
+      }
+    } catch(e) {
+      devVars = {};
+    }
+
+    return devVars;
+  }
+
   // Builds out a nested key to get nested values
   buildNestedKey(nested_key) {
     // Transform getter string into object
-    var keys = nested_key.split(':');
-    var store_key = this._store;
+    const keys = nested_key.split(':');
+    let store_key = this._store;
 
     keys.forEach(function(k) {
       try {
@@ -107,6 +126,6 @@ class Config {
   }
 }
 
-let config = new Config();
+const config = new Config();
 
 export default config;

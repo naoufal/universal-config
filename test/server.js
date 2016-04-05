@@ -21,6 +21,10 @@ describe('Server', function() {
       '../../../config/client',
       '../test/stubs/config/client'
     );
+    mockery.registerSubstitute(
+      '../../../config/dev',
+      '../test/stubs/config/dev'
+    );
 
     config = require('../lib/index');
   });
@@ -59,6 +63,14 @@ describe('Server', function() {
       assert.strictEqual(
         config.get('NESTED_SERVER:VALUE'),
         SERVER_VAR.NESTED_SERVER.VALUE
+      );
+    });
+
+    // Dev values
+     it('should get a dev value', function() {
+      assert.strictEqual(
+        config.get('DEV'),
+        true
       );
     });
 
