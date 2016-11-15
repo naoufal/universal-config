@@ -4,9 +4,13 @@ class Config {
 
     this._server = this.getServerVars();
     this._client = this.getClientVars();
-    this._dev = this.getDevVars();
+    this._localOverrides = this.getLocalOverrides();
 
-    this._store = Object.assign({}, this._client, this._server, this._dev);
+    this._store = Object.assign({},
+      this._client,
+      this._server,
+      this._localOverrides
+    );
   }
 
   set(key, value) {
@@ -88,24 +92,21 @@ class Config {
     return clientVars;
   }
 
-  getDevVars() {
-    let devVars;
-
-    if (process.env.NODE_ENV === 'production') {
-      return {};
-    }
+  getLocalOverrides() {
+    let overrides;
+    const filename = process.env.NODE_ENV === 'production' ? 'prod' : 'dev';
 
     try {
-      devVars = require('../../../config/dev');
+      overrides = process.env.NODE_ENV === 'production'
+        ? require('../../../config/prod')
+        : require('../../../config/dev');
 
-      if (process.env.NODE_ENV === 'development') {
-        console.warn(`Found a dev config in \`./config\`.`);
-      }
+      console.warn(`Using local overrides in \`./config/${filename}.js\`.`);
     } catch(e) {
-      devVars = {};
+      overrides = {};
     }
 
-    return devVars;
+    return overrides;
   }
 
   // Builds out a nested key to get nested values

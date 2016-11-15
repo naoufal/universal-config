@@ -74,6 +74,11 @@ describe('Server', function() {
       );
     });
 
+    // Prod values
+     it('should not get the dev value', function() {
+      assert.isUndefined(config.get('PROD'));
+    });
+
     // Undefined values
     it('should return `undefined` for variables that are not defined', function() {
       assert.isUndefined(config.get('FOO'));
