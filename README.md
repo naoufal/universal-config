@@ -81,12 +81,14 @@ config.get("AWS:accessKey");   // undefined
 config.get("FACEBOOK_APP_ID"); // Outputs your FACEBOOK_APP_ID
 ```
 
-### Development
+### Local Development
 In development, you may want to environment variables in a file instead of your `.bash_profile`.
 
 If you want to use this approach, you can override any server or client variable by creating a `dev.js` file in your `config` directory.  You'll want to add this file to your `.gitignore`.
 
-__NOTE:__ _The variables in this file will be exposed both on the client and the server, but this shouldn't be a problem since you should only be using this in development._
+For testing production locally, you may also specify a `prod.js` in the config directory. It will be imported when NODE_ENV is set to 'production'.
+
+__NOTE:__ _The variables in these files will be exposed both on the client and the server, but this shouldn't be a problem since you should only be using this locally._
 
 ## Methods
 
